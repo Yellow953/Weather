@@ -1,0 +1,47 @@
+<div id="<%= dom_id result %>" class="m-4 p-4 bg-whte-500">
+  <p class="my-5 flex">
+    <strong class="block font-medium mb-1">Key:</strong>
+    <%= result.key %>
+  </p>
+
+  <p class="my-5 flex">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= result.name %>
+  </p>
+
+  <p class="my-5 flex">
+    <strong class="block font-medium mb-1">Text:</strong>
+    <%= result.text %>
+  </p>
+
+  <p class="my-5 flex">
+    <strong class="block font-medium mb-1">Category:</strong>
+    <%= result.category %>
+  </p>
+
+  <p class="my-5 flex">
+    <strong class="block font-medium mb-1">Minimum:</strong>
+    <%= result.minimum %>
+  </p>
+
+  <p class="my-5 flex">
+    <strong class="block font-medium mb-1">Maximum:</strong>
+    <%= result.maximum %>
+  </p>
+
+  <p class="my-5 flex">
+    <strong class="block font-medium mb-1">Average:</strong>
+    <%= result.average %>
+  </p>
+
+  <%
+=begin%>
+ <% if action_name != "show" %>
+    <%= link_to "Show this result", result, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this result', edit_result_path(result), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %> 
+<%
+=end%>
+</div>
+<br><hr><br>

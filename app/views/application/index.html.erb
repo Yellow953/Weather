@@ -3,7 +3,6 @@
         <div class="form mb-8">
             <%= form_with url:root_path, method: :get do |f| %>
                 <div class="flex">
-                    <%= f.hidden_field :apikey, value:"Jj6wG6dToAaZsBdtNGXHBMskuxv9N0UH" %>
                     <%= f.text_field :q, placeholder:"Search for desired city", class:"m-2 form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%>
                     <%= f.submit "Search", class:"m-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"%>
                 </div>
@@ -11,11 +10,19 @@
         </div><hr>
         
         <div class="results">
-            <% @data.each do |d| %>
-                <div class="m-4 bg-white-500">
-                    <%= link_to d["LocalizedName"], selected_city_path(d["LocalizedName"]) %>
-                </div>
-            <% end %> 
+            <% if @key %>
+                <%= @key %> <br>
+                <%= @LocalizedName %> <br>
+                <%= @text %> <br>
+                <%= @category %> <br>
+                Minimum: <%= @min %> <br>
+                Maximum: <%= @max %> <br>
+                Average: <%= @avg %>
+            <% else %>
+                <% @results.each do |res| %>
+                    <%= render res %>
+                <% end %>
+            <% end %>
         </div>
     <% else %>
         Welcome to Rails App <br>
