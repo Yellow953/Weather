@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :results
-  devise_for :users
+
+  get "/test", to: "application#test", as:"test"
 
   root "application#index"
 end

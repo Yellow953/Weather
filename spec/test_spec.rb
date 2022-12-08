@@ -6,16 +6,13 @@ RSpec.describe "Welcome", type: :feature do
     expect(page).to have_content('Home')  
   end
     
-  feature 'Visitor searches' do
-    scenario 'with valid city' do
-      search_with 'Berlin'
-      expect(page).to have_content('Key')
-    end
-      
-    def search_with(query)
-      visit root_path
-      fill_in "q", with: query
-      click_button 'Search'
-    end
+  it "assigns @results" do
+    result = Result.create(key: 123, name: "berlin", category: "rainy", text: "hello world", average: 1, minimum:1, maximum:1)
+    get :index
+    expect(assigns(:results)).to eq([result])
+  end
+
+  it "is valid with valid attributes" do
+    expect(Result.new).to be_valid
   end
 end

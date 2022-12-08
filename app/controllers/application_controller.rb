@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
     require 'json'
 
     def index
-        weather_api_key = "s2web36mbNp5li8Jevjj9eHqWQHu2QU0"
+        weather_api_key = Rails.application.credentials.config.dig(:weather_api_key)
+
+        # -------------------------------
         if(params[:q])
             url1 = URI("http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + weather_api_key + "&q=" + params[:q] + "&commit=Search")   
             http = Net::HTTP.new(url1.host, url1.port)
@@ -27,13 +29,17 @@ class ApplicationController < ActionController::Base
             @max = (data2["DailyForecasts"][0]["Temperature"]["Maximum"]["Value"].to_i  - 32) * 5 / 9
             @avg = (@min + @max) / 2
 
-            # ------------------------
-            @result = Result.create(key: @key, name: @LocalizedName, text: @text, category: @category, minimum: @min, maximum: @max, average: @avg)
+            # ----------------------------
+            @result = Result.new(key: @key, name: @LocalizedName, text: @text, category: @category, minimum: @min, maximum: @max, average: @avg)
             if @result.save
                 flash.now[:success] = "Success..."    
             end
-        else
-            @results = Result.order('created_at DESC')
         end
+        @results = Result.last(10).reverse
     end
+
+    def test
+        redirect_to root_path
+    end
+    
 end
