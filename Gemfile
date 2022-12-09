@@ -20,6 +20,10 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 gem "tailwindcss-rails"
 gem "devise"
+gem "geocoder"
+gem "iplocate"
+gem "sidekiq"
+gem 'sidekiq-cron'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

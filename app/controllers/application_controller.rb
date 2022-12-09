@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     require 'uri'
     require 'net/http'
     require 'json'
+    require 'iplocate'
 
     def index
         weather_api_key = Rails.application.credentials.config.dig(:weather_api_key)
@@ -30,16 +31,39 @@ class ApplicationController < ActionController::Base
             @avg = (@min + @max) / 2
 
             # ----------------------------
+            @results = Result.last(10).reverse
+
+            # ----------------------------
             @result = Result.new(key: @key, name: @LocalizedName, text: @text, category: @category, minimum: @min, maximum: @max, average: @avg)
             if @result.save
                 flash.now[:success] = "Success..."    
             end
+        else
+            # ----------------------------
+            url5 = URI("http://api.ipify.org?format=json")
+            http = Net::HTTP.new(url5.host, url5.port)
+            request5 = Net::HTTP::Get.new(url5)
+            response5 = http.request(request5).body
+            data5 = JSON.parse(response5)
+            ip = data5["ip"]
+            
+            # -----------------------------
+            a = IPLocate.lookup(ip)
+            country = a["country"]
+            redirect_to root_path(q: country)
+
+            # -----------------------------
+            @results = Result.last(10).reverse
         end
-        @results = Result.last(10).reverse
     end
 
-    def test
+    def subscribe
+        @sub = Sub.new(email: params[:email])
+        if @sub.save
+            flash[:success] = "user added to subscribers list..."
+        end
         redirect_to root_path
     end
+    
     
 end

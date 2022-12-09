@@ -1,24 +1,13 @@
-# README
+<!-- 1 – Get user location from ip address and show that as a default result when page first opens. (gem geocode) -->
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<!-- 2 – Add a subscribe field to the bottom of the screen (email). -->
+ 
+<!-- 3 – Add subscribed users to database. -->
 
-Things you may want to cover:
+4 – Use rails cron jobs to send a daily scheduled daily weather report to that email .
 
-* Ruby version
+5 -  You can refer to here for your starting point to how to implement cron jobs: https://woetflow.com/posts/sending-mails-with-sidekiq-cron-jobs-in-ruby-on-rails/
 
-* System dependencies
+<!-- verify fields in model -->
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<!-- don't show the new search in last ten searches -->

@@ -1,0 +1,13 @@
+<body>
+  <h1>Your daily weather 😺</h1>
+  <p>
+    <%= @weather %>
+  </p>
+  <br>
+  <br>
+  <br>
+  <hr>
+  <p>
+    <%= link_to "Unsubscribe", unsubscribe_url(email: @sub.email), target: "_blank" %>
+  </p>
+</body>

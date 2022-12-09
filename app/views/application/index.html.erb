@@ -8,6 +8,8 @@
             <% end %>
         </div><hr>
         
+
+
         <div class="results">
             <% if @key %>
                 <div class="mx-auto p-4 flex justify-center">
@@ -44,6 +46,41 @@
                         </div>
                     </div>
                 </div>
+            <% else %>
+                <div class="mx-auto p-4 flex justify-center">
+                    <div class="flex flex-wrap">
+                        <div class="w-full px-2">
+                            <div class="bg-grey-500 p-10 text-white relative min-w-0 break-words rounded-lg overflow-hidden shadow-sm mb-4 w-full">
+                                <div class="px-6 py-6 relative">
+                                    <div class="flex mb-4 justify-between items-center">
+                                        <div>
+                                            <h5 class="mb-0 my-2 font-medium text-xl"><%= @LocalizedName6 %>, <%= @key6 %></h5>
+                                            <h6 class="mb-0 m-2"><%= @text6 %></h6>
+                                            <h6 class="mb-0 my-2"><%= @date6 %></h6><small><%= @category6 %></small>
+                                        </div>
+                                        <div class="text-right">
+                                            <h3 class="font-bold text-4xl mb-0"><span><%= @avg6 %>&deg;</span></h3>
+                                        </div>
+                                    </div>
+                                    <div class="block sm:flex justify-between items-center flex-wrap">
+                                        <div class="my-2 w-full sm:w-1/2">
+                                            <div class="flex mb-2 justify-between items-center"><span>Temp</span><small class="px-2 inline-block"><%= @avg6 %>&nbsp;&deg;</small></div>
+                                        </div>
+                                        <div class="my-2 w-full sm:w-1/2">
+                                            <div class="flex mb-2 justify-between items-center"><span>Feels like</span><small class="px-2 inline-block"><%= @avg6 %>&nbsp;&deg;</small></div>
+                                        </div>
+                                        <div class="my-2 w-full sm:w-1/2">
+                                            <div class="flex mb-2 justify-between items-center"><span>Temp min</span><small class="px-2 inline-block"><%= @min6 %>&nbsp;&deg;</small></div>
+                                        </div>
+                                        <div class="my-2 w-full sm:w-1/2">
+                                            <div class="flex mb-2 justify-between items-center"><span>Temp max</span><small class="px-2 inline-block"><%= @max6 %>&nbsp;&deg;</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
             <% end %>
             <div class="mx-auto p-2 flex justify-center">
                 <div class="flex flex-wrap mx-auto">
@@ -84,4 +121,18 @@
                 </div>
             </div>
         </div>
+
+    <hr>
+    <div class="form my-8">
+        <%= form_with url:subscribe_path, method: :get do |f| %>
+            <div class="flex">
+                <%= f.text_field :email, placeholder:"Enter your email to get daily weather updates...", class:"m-2 form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%>
+                <%= f.submit "Subscribe", class:"m-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"%>
+            </div>
+        <% end %>
+    </div>
+
+
+
+
 </div>
