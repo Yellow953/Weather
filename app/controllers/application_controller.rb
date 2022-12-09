@@ -49,7 +49,11 @@ class ApplicationController < ActionController::Base
             
             # -----------------------------
             a = IPLocate.lookup(ip)
-            country = a["country"]
+            if a["city"] == "Beirut" || a["city"] == "Jbeil" || a["city"] == "Jounieh" || a["city"] == "Saida" || a["city"] == "Sour" || a["city"] == "Zahle" || a["city"] == "Tripoly"
+                country = a["city"]
+            else
+                country = a["country"]
+            end
             redirect_to root_path(q: country)
 
             # -----------------------------
@@ -61,6 +65,8 @@ class ApplicationController < ActionController::Base
         @sub = Sub.new(email: params[:email])
         if @sub.save
             flash[:success] = "user added to subscribers list..."
+        else
+            flash[:danger] = "Couldn't add user to subscribers list..."
         end
         redirect_to root_path
     end
