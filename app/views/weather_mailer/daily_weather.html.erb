@@ -1,0 +1,16 @@
+<body>
+  <h1>Your daily weather</h1>
+  <h2> <%= @weather.key %>, <%= @weather.name %> </h2>
+  <h3><%= @weather.category %></h3>
+  <h4><%= @weather.text %></h4>
+  <p>
+    Average: <%= @weather.average %> <br>
+    Minimum: <%= @weather.minimum %> <br>
+    Maximum: <%= @weather.maximum %> <br>
+  </p>
+
+  <br>
+  <br>
+  <br>
+  <hr>
+</body>

@@ -71,5 +71,10 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
     end
     
-    
+    def test
+        WeatherMailer.with(sub: Sub.second, weather: Result.first).daily_weather.deliver_now 
+        @weather = Result.last
+        render "weather_mailer/daily_weather"
+    end
+     
 end

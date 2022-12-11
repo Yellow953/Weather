@@ -14,6 +14,6 @@
 
 <!-- 1 -  add error message when email is not valid, check for uniquness -->
 
-2 - put a condition to show city if doenst exist show country
+<!-- 2 - put a condition to show city if doenst exist show country -->
 
 <!-- install redis -->

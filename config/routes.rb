@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   get "/subscribe", to: "application#subscribe", as:"subscribe"
+  get "/test", to: "application#test"
 
   root "application#index"
 end
