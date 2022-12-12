@@ -1,7 +1,7 @@
 class WeatherMailer < ApplicationMailer
     def daily_weather
         @sub = params[:sub]
-        @weather = params[:weather]
+        @result = params[:result]
         mail(to: @sub.email, subject: "Daily weather")       
     end
 end

@@ -3,7 +3,7 @@ class WeatherMailerJob < ApplicationJob
 
   def perform(*args)
     Sub.find_each do |sub|
-      WeatherMailer.with(sub: sub, weather: ResultServices::Result.new.daily_weather).daily_weather.deliver_later
+      WeatherMailer.with(sub: sub, result: Result.last).daily_weather.deliver_later
     end
   end
 end

@@ -17,3 +17,8 @@
 <!-- 2 - put a condition to show city if doenst exist show country -->
 
 <!-- install redis -->
+
+https://rubyandrails.info/pages/heroku-alternatives
+https://woetflow.com/posts/sending-mails-with-sidekiq-cron-jobs-in-ruby-on-rails/#23-booting-up-sidekiq
+https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/neighbors/%7BlocationKey%7D
+https://github.com/alexreisner/geocoder
