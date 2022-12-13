@@ -5,7 +5,7 @@ ruby "3.0.0"
 
 gem "rails", "~> 7.0.4"
 gem "sprockets-rails"
-gem "pg", "~> 1.1"
+gem "pg"
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -39,8 +39,4 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'webdrivers'
-end
-
-group :production do
-  gem "pg"
 end
