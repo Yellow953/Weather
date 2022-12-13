@@ -19,6 +19,7 @@
 <!-- install redis -->
 
 useful links:
+https://dashboard.render.com/web/srv-cec5orqrrk0506ud5ou0/logs
 https://rubyandrails.info/pages/heroku-alternatives
 https://woetflow.com/posts/sending-mails-with-sidekiq-cron-jobs-in-ruby-on-rails/#23-booting-up-sidekiq
 https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/neighbors/%7BlocationKey%7D
