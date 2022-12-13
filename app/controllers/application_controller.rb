@@ -49,11 +49,7 @@ class ApplicationController < ActionController::Base
             
             # -----------------------------
             a = IPLocate.lookup(ip)
-            if a["city"] == "Beirut" || a["city"] == "Jbeil" || a["city"] == "Jounieh" || a["city"] == "Saida" || a["city"] == "Sour" || a["city"] == "Zahle" || a["city"] == "Tripoly"
-                country = a["city"]
-            else
-                country = a["country"]
-            end
+            country = a["city"] || a["country"]
             redirect_to root_path(q: country)
 
             # -----------------------------
