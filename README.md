@@ -18,7 +18,10 @@
 
 <!-- install redis -->
 
-useful links:
+<!-- credentials -->
+EDITOR="code --wait" rails credentials:edit
+
+<!-- useful links: -->
 https://dashboard.render.com/web/srv-cec5orqrrk0506ud5ou0/logs
 https://rubyandrails.info/pages/heroku-alternatives
 https://woetflow.com/posts/sending-mails-with-sidekiq-cron-jobs-in-ruby-on-rails/#23-booting-up-sidekiq
@@ -26,7 +29,7 @@ https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v
 https://github.com/alexreisner/geocoder
 https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/neighbors/%7BlocationKey%7D
 
-db:
+<!-- db: -->
 postgres://weather:SbXRTscqnUdlftWKw5Umia8P0zpJA2Yt@dpg-cec5kben6mprhjs6q0j0-a/weather_production_ksi0
 postgres://weather:SbXRTscqnUdlftWKw5Umia8P0zpJA2Yt@dpg-cec5kben6mprhjs6q0j0-a.frankfurt-postgres.render.com/weather_production_ksi0
 PGPASSWORD=SbXRTscqnUdlftWKw5Umia8P0zpJA2Yt psql -h dpg-cec5kben6mprhjs6q0j0-a.frankfurt-postgres.render.com -U weather weather_production_ksi0

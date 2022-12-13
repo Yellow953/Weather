@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
             response1 = http.request(request1).body
             data1 = JSON.parse(response1)
-        
+
             @LocalizedName = data1[0]["LocalizedName"]
             @key = data1[0]["Key"]
 
