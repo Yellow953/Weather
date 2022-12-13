@@ -1,7 +1,7 @@
 databases:
-  - name: Weather_production
-    databaseName: Weather_production
-    user: Weather
+  - name: Weather
+    databaseName: weather_production
+    user: weather
 
 services:
   - type: web
