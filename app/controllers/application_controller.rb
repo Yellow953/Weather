@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     def index
         weather_api_key = Rails.application.credentials.config.dig(:weather_api_key)
 
-        @ipv2 = request.ip
         # -------------------------------
         if(params[:q])
             url1 = URI("http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + weather_api_key + "&q=" + params[:q] + "&commit=Search")   
@@ -46,9 +45,8 @@ class ApplicationController < ActionController::Base
             request5 = Net::HTTP::Get.new(url5)
             response5 = http.request(request5).body
             data5 = JSON.parse(response5)
-            # ip = data5["ip"]
-            ip = @ipv2
-
+            ip = data5["ip"]
+            
             # -----------------------------
             a = IPLocate.lookup(ip)
             country = a["city"] || a["country"]
