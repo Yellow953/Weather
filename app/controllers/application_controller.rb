@@ -15,20 +15,23 @@ class ApplicationController < ActionController::Base
 
             response1 = http.request(request1).body
             data1 = JSON.parse(response1)
+            if (data1 != [])
+                @LocalizedName = data1[0]["LocalizedName"]
+                @key = data1[0]["Key"]
 
-            @LocalizedName = data1[0]["LocalizedName"]
-            @key = data1[0]["Key"]
-
-            url2 = URI("http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + @key + "?apikey=" + weather_api_key)
-            request2 = Net::HTTP::Get.new(url2)
-            response2 = http.request(request2).body
-            data2 = JSON.parse(response2)
-        
-            @text = data2["Headline"]["Text"]
-            @category = data2["Headline"]["Category"]
-            @min = (data2["DailyForecasts"][0]["Temperature"]["Minimum"]["Value"].to_i - 32) * 5 / 9
-            @max = (data2["DailyForecasts"][0]["Temperature"]["Maximum"]["Value"].to_i  - 32) * 5 / 9
-            @avg = (@min + @max) / 2
+                url2 = URI("http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + @key + "?apikey=" + weather_api_key)
+                request2 = Net::HTTP::Get.new(url2)
+                response2 = http.request(request2).body
+                data2 = JSON.parse(response2)
+            
+                @text = data2["Headline"]["Text"]
+                @category = data2["Headline"]["Category"]
+                @min = (data2["DailyForecasts"][0]["Temperature"]["Minimum"]["Value"].to_i - 32) * 5 / 9
+                @max = (data2["DailyForecasts"][0]["Temperature"]["Maximum"]["Value"].to_i  - 32) * 5 / 9
+                @avg = (@min + @max) / 2
+            else
+                flash.now[:danger] = "Could not find this city"
+            end
 
             # ----------------------------
             @results = Result.last(10).reverse
