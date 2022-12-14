@@ -22,7 +22,7 @@
 EDITOR="code --wait" rails credentials:edit
 
 <!-- useful links: -->
-https://dashboard.render.com/web/srv-cec5orqrrk0506ud5ou0/logs
+https://dashboard.render.com/web/srv-cec5orqrrk0506ud5ou0/deploys/dep-cecb6gun6mprhjsqgfi0
 https://rubyandrails.info/pages/heroku-alternatives
 https://woetflow.com/posts/sending-mails-with-sidekiq-cron-jobs-in-ruby-on-rails/#23-booting-up-sidekiq
 https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/neighbors/%7BlocationKey%7D
@@ -36,5 +36,5 @@ PGPASSWORD=SbXRTscqnUdlftWKw5Umia8P0zpJA2Yt psql -h dpg-cec5kben6mprhjs6q0j0-a.f
 
 <!------------------------------------------------>
 http://dataservice.accuweather.com/locations/v1/cities/neighbors/178087
-Fly.io
 https://crontogo.com
+https://cron-job.org/en/
