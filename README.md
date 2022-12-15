@@ -38,3 +38,8 @@ PGPASSWORD=SbXRTscqnUdlftWKw5Umia8P0zpJA2Yt psql -h dpg-cec5kben6mprhjs6q0j0-a.f
 http://dataservice.accuweather.com/locations/v1/cities/neighbors/178087
 https://crontogo.com
 https://cron-job.org/en/
+
+<!------------------------------------------------>
+ip address from user agent
+cron job 
+mailer setup
