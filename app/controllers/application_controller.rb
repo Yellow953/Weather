@@ -69,7 +69,13 @@ class ApplicationController < ActionController::Base
         end
         redirect_to root_path
     end
-    
+
+    def daily_weather
+        Sub.all.each do |s|
+            WeatherMailer.with(sub: s, result: Result.last).daily_weather.deliver_later 
+        end
+    end
+
     def test
         WeatherMailer.with(sub: Sub.second, weather: Result.first).daily_weather.deliver_now 
         @weather = Result.last

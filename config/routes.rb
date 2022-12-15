@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
 
+  get "/daily_weather", to: "application#daily_weather", as: "daily_weather"
   get "/subscribe", to: "application#subscribe", as:"subscribe"
   get "/test", to: "application#test"
 

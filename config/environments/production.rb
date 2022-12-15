@@ -1,6 +1,18 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.action_mailer.default_url_options = { host: 'https://weather-ruby-on-rails.onrender.com', protocol: "https" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:  "smtp.gmail.com",
+    port: 587,
+    domain: "https://weather-ruby-on-rails.onrender.com",
+    username: "joemazloum953@gmail.com",
+    password: "ijejdmslcbkwptfa",
+    authentication: "plain",
+    enable_starttls_auto: true,
+  }
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -90,8 +102,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.action_mailer.default_url_options = { host: 'weather.render.com' }
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
 end
