@@ -74,8 +74,8 @@ Rails.application.configure do
     address:  "smtp.gmail.com",
     port: 587,
     domain: "https://weather-ruby-on-rails.onrender.com",
-    username: Rails.application.credentials.config.dig(:email),
-    password: Rails.application.credentials.config.dig(:password),
+    username: "joemazloum@gmail.com",
+    password: "ijejdmslcbkwptfa",
     authentication: "plain",
     enable_starttls_auto: true,
   }
