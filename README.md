@@ -40,6 +40,10 @@ https://crontogo.com
 https://cron-job.org/en/
 
 <!------------------------------------------------>
-ip address from user agent
+<!-- ip address from user agent
 cron job 
-mailer setup
+mailer setup -->
+
+1 - Separate your method by their function
+2 - create fallbacks for responses
+<!-- 3 - complete tests -->

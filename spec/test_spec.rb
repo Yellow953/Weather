@@ -6,8 +6,12 @@ RSpec.describe "Welcome", type: :feature do
     expect(page).to have_content('Home')  
   end
 
-  it "is valid with valid attributes" do
+  it " Result test" do
     expect(Result.new(key: 123, name: "berlin", category: "rainy", text: "hello world", average: 1, minimum:1, maximum:1)).to be_valid
+  end
+
+  it " Sub test" do
+    expect(Sub.new(email: "test@test.com")).to be_valid
   end
 
   # ----------------------------------
