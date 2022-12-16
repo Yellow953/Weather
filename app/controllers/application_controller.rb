@@ -72,8 +72,11 @@ class ApplicationController < ActionController::Base
 
     def daily_weather
         Sub.all.each do |s|
-            WeatherMailer.with(sub: s, result: Result.last).daily_weather.deliver_later 
+            WeatherMailer.with(sub: s, result: Result.last).daily_weather.deliver_now 
+            @sub = s
+            @result = Result.last
         end
+        render "weather_mailer/daily_weather"
     end
 
     def test
