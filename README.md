@@ -44,6 +44,6 @@ https://cron-job.org/en/
 cron job 
 mailer setup -->
 
-1 - Separate your method by their function
-2 - create fallbacks for responses
+<!-- 1 - Separate your method by their function -->
+<!-- 2 - create fallbacks for responses -->
 <!-- 3 - complete tests -->
