@@ -24,6 +24,7 @@ gem "geocoder"
 gem "iplocate"
 gem "sidekiq"
 gem 'sidekiq-cron'
+gem 'bundler'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

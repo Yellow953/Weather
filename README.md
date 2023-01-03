@@ -47,3 +47,12 @@ mailer setup -->
 <!-- 1 - Separate your method by their function -->
 <!-- 2 - create fallbacks for responses -->
 <!-- 3 - complete tests -->
+
+create a new rails api inside docker
+create a dump file from your old weather app
+upload this dump file to your new api
+connect the frontend of the old weather app to new api
+
+docker-compose run --rm web bundle exec rails db:migrate
+docker-compose exec db pg_dump -U root password --no-owner | gzip -9  > weather_development_backup.zip
+docker-compose exec db pg_restore -C -d weather_development /tmp/db:/var/lib/postgresql/backups/weather_development_backup.zip 

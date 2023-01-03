@@ -39,6 +39,8 @@ class ApplicationController < ActionController::Base
             
             data5 = make_api_request(http, url5)
             ip = data5["ip"]
+            puts "================ a ================"
+            puts ip
             
             country = get_city_or_country(ip)
             redirect_to root_path(q: country)
