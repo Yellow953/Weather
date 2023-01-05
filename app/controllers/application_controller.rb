@@ -51,31 +51,6 @@ class ApplicationController < ActionController::Base
             @results = response["results"]
         end
     end
-
-    def subscribe
-        @sub = Sub.new(email: params[:email])
-        if @sub.save
-            flash[:success] = "user added to subscribers list..."
-        else
-            flash[:danger] = "Couldn't add user to subscribers list..."
-        end
-        redirect_to root_path
-    end
-
-    def daily_weather
-        Sub.all.each do |s|
-            WeatherMailer.with(sub: s, result: Result.last).daily_weather.deliver_now 
-            @sub = s
-            @result = Result.last
-        end
-        render "weather_mailer/daily_weather"
-    end
-
-    def test
-        body = RestClient.get "http://host.docker.internal:3001/results", headers = {accept: :json}
-        response = JSON.parse(body)
-        @results = response["results"]
-    end
      
     # -----------------------------------------------------------------
 
@@ -90,13 +65,9 @@ class ApplicationController < ActionController::Base
         return JSON.parse(response)
     end
     
-    def get_last_results
-        return Result.last(10).reverse
-    end
-    
     def get_city_or_country(ip)
         a = IPLocate.lookup(ip)
         return a["city"] || a["country"]
     end
-    
+ 
 end
