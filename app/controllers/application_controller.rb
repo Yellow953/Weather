@@ -31,7 +31,10 @@ class ApplicationController < ActionController::Base
                 flash.now[:danger] = "Could not find this city"
             end
 
-            @results = get_last_results()
+            body = RestClient.get "http://host.docker.internal:3001/results", headers = {accept: :json}
+            response = JSON.parse(body)
+            @results = response["results"]
+
             savedata(@key, @LocalizedName, @text, @category, @min, @max, @avg)
         else
             url5 = URI("http://api.ipify.org?format=json")
@@ -39,12 +42,13 @@ class ApplicationController < ActionController::Base
             
             data5 = make_api_request(http, url5)
             ip = data5["ip"]
-            puts "================ a ================"
-            puts ip
             
             country = get_city_or_country(ip)
             redirect_to root_path(q: country)
-            @results = get_last_results()
+            
+            body = RestClient.get "http://host.docker.internal:3001/results", headers = {accept: :json}
+            response = JSON.parse(body)
+            @results = response["results"]
         end
     end
 
@@ -68,18 +72,16 @@ class ApplicationController < ActionController::Base
     end
 
     def test
-        WeatherMailer.with(sub: Sub.second, weather: Result.first).daily_weather.deliver_now 
-        @weather = Result.last
-        render "weather_mailer/daily_weather"
+        body = RestClient.get "http://host.docker.internal:3001/results", headers = {accept: :json}
+        response = JSON.parse(body)
+        @results = response["results"]
     end
      
     # -----------------------------------------------------------------
 
     def savedata(key, localizedName, text, category, min, max , avg)
-        result = Result.new(key: key, name: localizedName, text: text, category: category, minimum: min, maximum: max, average: avg)
-        if result.save
-            flash.now[:success] = "Success..."    
-        end
+        url =  "http://host.docker.internal:3001/results/new?key=#{key}&name=#{localizedName}&text=#{text}&category=#{category}&minimum=#{min}&maximum=#{max}&average=#{avg}"
+        body = RestClient.post url, headers = {accept: :json}
     end
     
     def make_api_request(http, url)

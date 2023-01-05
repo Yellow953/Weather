@@ -19,7 +19,6 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 gem "tailwindcss-rails"
-gem "devise"
 gem "geocoder"
 gem "iplocate"
 gem "sidekiq"
@@ -41,3 +40,4 @@ group :test do
   gem 'capybara'
   gem 'webdrivers'
 end
+gem "rest-client", "~> 2.1"
